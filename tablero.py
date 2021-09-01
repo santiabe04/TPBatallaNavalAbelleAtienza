@@ -13,28 +13,26 @@ class Tablero:
         self.celdas = []
         self.crearCeldas()
         self.barcoLista = []
-        self.barcoListaRevolution = []
         self.barcos = 0
         self.crearBarcos()
     
     def crearCeldas(self):
+        #Creamos las celdas del tablero
         for fila in range(self.alto):
             self.celdas.append([])
             for columna in range(self.ancho):
                 miCelda = Celda((fila,columna),False)
                 self.celdas[fila].append(miCelda)
-                #print (self.celdas)
-                #self.celdafilacolumna.clear()
 
     def apuntar(self, fila, columna):
         while True:
             try:
                 barco = self.celdas[fila][columna].hayBarco()
                 if barco != False:    
-                    self.barcoLista.remove(barco)
+                    self.barcoLista.remove(barco) #Sacamos un barco de la lista
                 break
-            except IndexError:
-                print ("Fila o columna fuera de rango")
+            except (IndexError, ValueError):
+                print ("Fila o columna fuera de rango o sin valor")
                 columna = int(input("Indique la columna:"))
                 fila = int(input("Indique la fila:"))
             
@@ -42,8 +40,9 @@ class Tablero:
     def crearBarcos(self):
         miRandomActual = ""
         miRandomAnterior = ""
-        for i in range (0, 5):
+        for i in range (0, 5): #Cantidad de barcos
             while True :
+                #Guardamos la celda para que no se repita
                 miRandomFila = random.randint(0,4)
                 miRandomColumna = random.randint(0,4)
                 miRandomActual = str(miRandomColumna) + str(miRandomFila)
@@ -51,8 +50,7 @@ class Tablero:
                     miBarco = Barco()
                     self.celdas[miRandomFila][miRandomColumna].agregarBarco(miBarco)
                     self.barcoLista.append(miBarco)
-                    print(self.barcoLista)
-                    miCelda = Celda((miRandomFila,miRandomColumna), barco=True)
+                    
                     miRandomAnterior = str(miRandomColumna) + str(miRandomFila)
                     break
 

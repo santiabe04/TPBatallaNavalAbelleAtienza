@@ -8,6 +8,7 @@ class Juego:
         self.jugar()
     
     def preguntarNombreJugador(self):
+        #Para saber el nombre del jugador y tenga uno por defecto
         elNombre = str(input("Dame el nombre: "))
         print("")
         if not elNombre:
@@ -15,15 +16,21 @@ class Juego:
         return elNombre
     
     def jugar(self):
-        while self.elTablero.largobarcoLista() != 0:
+        while self.elTablero.largobarcoLista() != 0: #Para hacer que se rrompa el bucle al no haber más barcos
             print ("Ingrese un valor del 0 al 4")
-            columna = int(input("Indique la columna:"))
-            fila = int(input("Indique la fila:"))
-            self.elTablero.apuntar(fila,columna)
+            while True:
+                try:
+                    columna = int(input("Indique la columna:"))
+                    fila = int(input("Indique la fila:"))
+                    break
+                except ValueError: #Por si hay errores de escribir algo no número
+                    print ("Fila o columna no es un valor posible ")
+                    continue
+            self.elTablero.apuntar(fila,columna) #Llama a la función apuntar pasándoles la fila y columna ingresadas por el usuario
             self.intentos += 1
-            # Para terminar game loop self.terminado = True
-        print ("GANASTE EN ", str(self.intentos), " INTENTOS")
-        print ("WARZONE VICTORY")
+        nombreMayusculas = self.nombreJugador.upper()
+        print ("FELICIDADES", (nombreMayusculas))
+        print ("GANASTE  EN ", str(self.intentos), " INTENTOS")
         quit()
 
 if __name__ == "__main__":
