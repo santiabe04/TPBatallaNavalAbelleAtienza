@@ -4,13 +4,13 @@ class Celda:
         self.posicion = posicion # tiene la forma (x,y)
         self.barco = barco
         self.hundido = False
-    
+
     def agregarBarco(self, elBarco):
-        #Agregamos un barco a la celda
+        '''Agregamos un barco a la celda'''
         self.barco = elBarco
     
     def hayBarco(self):
-        #Se consulta si hay un barco en la celda
+        '''Se consulta si hay un barco en la celda'''
         if self.barco != False: #Hay un barco en la celda
             self.barco.tocar()
             print("HUNDIDO")

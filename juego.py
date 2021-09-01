@@ -8,7 +8,7 @@ class Juego:
         self.jugar()
     
     def preguntarNombreJugador(self):
-        #Para saber el nombre del jugador y tenga uno por defecto
+        '''Para saber el nombre del jugador y tenga uno por defecto'''
         elNombre = str(input("Dame el nombre: "))
         print("")
         if not elNombre:
@@ -16,6 +16,7 @@ class Juego:
         return elNombre
     
     def jugar(self):
+        '''Loop del juego que consulta constantemente si se terminó'''
         while self.elTablero.largobarcoLista() != 0: #Para hacer que se rrompa el bucle al no haber más barcos
             print ("Ingrese un valor del 0 al 4")
             while True:

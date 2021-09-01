@@ -15,8 +15,9 @@ class Tablero:
         self.barcoLista = []
         self.barcos = 0
         self.crearBarcos()
-    
+
     def crearCeldas(self):
+        '''Se crean celdas a partir de la cantidad de filas y columnas'''
         #Creamos las celdas del tablero
         for fila in range(self.alto):
             self.celdas.append([])
@@ -25,6 +26,7 @@ class Tablero:
                 self.celdas[fila].append(miCelda)
 
     def apuntar(self, fila, columna):
+        '''Se ingresan fila y columna, se pregunta si hay un barco y se borra un barco en caso de que haya'''
         while True:
             try:
                 barco = self.celdas[fila][columna].hayBarco()
@@ -38,6 +40,7 @@ class Tablero:
             
 
     def crearBarcos(self):
+        '''Se crean barcos en celdas aleatorias'''
         miRandomActual = ""
         miRandomAnterior = ""
         for i in range (0, 5): #Cantidad de barcos
@@ -55,4 +58,5 @@ class Tablero:
                     break
 
     def largobarcoLista(self):
+        '''Devuelve cantidad de barcos no hundidos'''
         return len(self.barcoLista)
