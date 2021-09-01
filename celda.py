@@ -10,7 +10,7 @@ class Celda:
         self.barco = elBarco
     
     def hayBarco(self):
-        '''Se consulta si hay un barco en la celda'''
+        '''Se consulta si hay un barco en la celda y se devuelve un boolean (hundido)'''
         if self.barco != False: #Hay un barco en la celda
             self.barco.tocar()
             print("HUNDIDO")

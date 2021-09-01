@@ -29,6 +29,8 @@ class Juego:
                     continue
             self.elTablero.apuntar(fila,columna) #Llama a la función apuntar pasándoles la fila y columna ingresadas por el usuario
             self.intentos += 1
+            print ("INTENTOS: ", self.intentos)
+            print ("")
         nombreMayusculas = self.nombreJugador.upper()
         print ("FELICIDADES", (nombreMayusculas))
         print ("GANASTE  EN ", str(self.intentos), " INTENTOS")
